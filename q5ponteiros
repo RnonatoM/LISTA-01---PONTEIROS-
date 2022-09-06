@@ -1,0 +1,47 @@
+#include<stdio.h>
+#include<locale.h>
+
+
+char situacao(float nota1, float nota2, float nota3, int faltas, int aulas, float *m);  
+
+int main(void){
+    setlocale(LC_ALL, "Portuguese");
+    
+    float nota1, nota2, nota3, m;             
+    int faltas,aulas;
+    
+    
+    printf("Digite a primeira nota: ");
+    scanf("%f", &nota1);
+    printf("Digite a segunda nota: ");
+    scanf("%f", &nota2);
+    printf("Digite a terceira nota: ");
+    scanf("%f", &nota3);
+    printf("Digite o total de aulas: ");
+    scanf("%d", &aulas);
+    printf("Digite o total de faltas: ");
+    scanf("%d", &faltas);   
+
+    char s = situacao(nota1, nota2, nota3, faltas, aulas, &m);  
+return(0);
+}
+
+
+char situacao(float nota1, float nota2, float nota3, int faltas, int aulas, float *m){  
+
+    printf("A média do aluno é %.1f\t", (*m = nota1 + nota2 + nota3)/3); 
+    int a;                      
+    a=(100 * faltas/aulas);     
+    if(a <= 25 && *m >= 6){  
+    	printf("Aluno APROVADO");
+            return'A';
+        } 
+    else if(a <= 25 && *m < 6){  
+    	printf("Aluno REPROVADO");
+            return'R'; 
+        }
+    else {
+    	printf("Aluno REPROVADO POR FALTAS");   //
+            return'F'; 
+        }
+}
